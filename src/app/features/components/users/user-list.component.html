@@ -10,12 +10,12 @@
         <th>Website</th>
         <th>Action</th>
       </tr>
-      <tr *ngFor="let user of users">
-        <td data-title="Name">{{ user.name }}</td>
-        <td data-title="Email">{{ user.email }}</td>
-        <td data-title="Website">{{ user.website }}</td>
+      <tr data-test="user-row" *ngFor="let user of users">
+        <td data-test="name" data-title="Name">{{ user.name }}</td>
+        <td data-test="email" data-title="Email">{{ user.email }}</td>
+        <td data-test="website" data-title="Website">{{ user.website }}</td>
         <td>
-          <a [routerLink]="['/user', user.id]">
+          <a data-test="user-detail-link" [routerLink]="['/user', user.id]">
             View Detail
           </a>
         </td>

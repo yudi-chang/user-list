@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { Router } from '@angular/router';
 import { User } from '@shared/models/user.model';
 import { UserService } from '@core/services/user.service';
 import { LoadingErrorWrapperComponent } from "@shared/components/loading-error-wrapper/loading-error-wrapper.component";
@@ -18,7 +17,6 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private router: Router,
   ) {}
 
   ngOnInit(): void {
