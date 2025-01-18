@@ -70,6 +70,6 @@ describe('UserDetailComponent', () => {
   });
 
   // showing loading, error message, and retry function is not really this component's responsibility
-  // it's loading-error-wrapper component's responsibility
-  // so the test to show loading, error, or retry function will be in loading-error-wrapper component spec instead of this component spec
+  // it's loading-error-wrapper component and error-handler component responsibility
+  // so the test to show loading and error will be in loading-error-wrapper spec, while retry function will be in error-handler component spec instead of this component spec
 });
