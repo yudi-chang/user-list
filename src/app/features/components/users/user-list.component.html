@@ -1,0 +1,19 @@
+<section>
+  <h1 class="title">Users</h1>
+  <app-loading-error-wrapper
+    [retry]="fetchUsers.bind(this)"
+  >
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Website</th>
+      </tr>
+      <tr *ngFor="let user of users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.website }}</td>
+      </tr>
+    </table>
+  </app-loading-error-wrapper>
+</section>

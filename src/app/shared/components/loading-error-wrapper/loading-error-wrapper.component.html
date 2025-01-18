@@ -1,0 +1,8 @@
+<app-spinner [isLoading]="!!(state.loading$ | async)" />
+<app-error-handler
+  [isError]="!!(state.error$ | async)"
+  [retry]="retry"
+  />
+<ng-container *ngIf="!(state.loading$ | async) && !(state.error$ | async)">
+  <ng-content />
+</ng-container>
