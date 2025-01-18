@@ -24,11 +24,10 @@ describe('LoadingErrorWrapperComponent', () => {
         { provide: StateService, useValue: mockStateService }
       ]
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(LoadingErrorWrapperComponent);
     component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create the component', () => {
@@ -36,8 +35,6 @@ describe('LoadingErrorWrapperComponent', () => {
   });
 
   it('should show content when not loading and no error', () => {
-    fixture.detectChanges();
-
     const content = fixture.debugElement.query(By.css('[data-test="content-wrapper"]'));
     expect(content).toBeTruthy();
   });

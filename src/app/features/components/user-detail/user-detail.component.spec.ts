@@ -30,9 +30,7 @@ describe('UserDetailComponent', () => {
         { provide: ActivatedRoute, useValue: mockActivatedRoute },
       ]
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(UserDetailComponent);
     component = fixture.componentInstance;
     mockUserService.fetchUserDetail.and.returnValue(of(mockUser));

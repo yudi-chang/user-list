@@ -29,9 +29,7 @@ describe('UserListComponent', () => {
         { provide: ActivatedRoute, useValue: {} },
       ]
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(UserListComponent);
     component = fixture.componentInstance;
     mockUserService.fetchUsers.and.returnValue(of(mockUsers));
