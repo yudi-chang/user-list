@@ -1,1 +1,76 @@
-<p>user-detail works!</p>
+<section>
+  <h1 class="title">User Detail</h1>
+  <app-loading-error-wrapper [retry]="fetchUserDetail.bind(this)">
+    <div class="user-detail-wrapper">
+      <div class="header">
+        <h2>{{ user?.name }}</h2>
+      </div>
+      <div class="user-detail">
+        <div class="card-detail personal-info">
+          <h3>Personal Information</h3>
+          <div class="detail-wrapper">
+            <div class="detail-description">Name:</div>
+            <div class="detail-value">{{ user?.name }}</div>
+          </div>
+          <div class="detail-wrapper">
+            <div class="detail-description">Username:</div>
+            <div class="detail-value">{{ user?.username }}</div>
+          </div>
+          <div class="detail-wrapper">
+            <div class="detail-description">Email:</div>
+            <div class="detail-value">{{ user?.email }}</div>
+          </div>
+          <div class="detail-wrapper">
+            <div class="detail-description">Phone:</div>
+            <div class="detail-value">{{ user?.phone }}</div>
+          </div>
+          <div class="detail-wrapper">
+            <div class="detail-description">Website:</div>
+            <div class="detail-value">
+              <a href="http://{{ user?.website }}" target="_blank">{{ user?.website }}</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-detail address">
+          <h3>Address</h3>
+          <div class="detail-wrapper">
+            <div class="detail-description">Street:</div>
+            <div class="detail-value">{{ user?.address?.street }}</div>
+          </div>
+          <div class="detail-wrapper">
+            <div class="detail-description">Suite:</div>
+            <div class="detail-value">{{ user?.address?.suite }}</div>
+          </div>
+          <div class="detail-wrapper">
+            <div class="detail-description">City:</div>
+            <div class="detail-value">{{ user?.address?.city }}</div>
+          </div>
+          <div class="detail-wrapper">
+            <div class="detail-description">Zipcode:</div>
+            <div class="detail-value">{{ user?.address?.zipcode }}</div>
+          </div>
+          <div class="detail-wrapper">
+            <div class="detail-description">Location (Latitude, Longitude)</div>
+            <div class="detail-value">{{ user?.address?.geo?.lat }}, {{ user?.address?.geo?.lng }}
+            </div>
+          </div>
+        </div>
+        <div class="card-detail company">
+          <h3>Company</h3>
+          <div class="detail-wrapper">
+            <div class="detail-description">Company Name:</div>
+            <div class="detail-value">{{ user?.company?.name }}</div>
+          </div>
+          <div class="detail-wrapper">
+            <div class="detail-description">Catchphrase:</div>
+            <div class="detail-value">{{ user?.company?.catchPhrase }}</div>
+          </div>
+          <div class="detail-wrapper">
+            <div class="detail-description">Business Slogans:</div>
+            <div class="detail-value">{{ transformedBS }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-loading-error-wrapper>
+</section>

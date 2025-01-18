@@ -1,0 +1,80 @@
+@use 'variables' as *; 
+
+.user-detail-wrapper {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0px 10px 15px 10px rgb(0 0 0 / 15%);
+  background-color: #2c3e50; 
+  border-radius: 10px;
+  padding: 0 20px;
+
+  .header {
+    padding: 20px 20px;
+    text-align: center;
+    border-bottom: solid 4px var(--secondary-color);
+  }
+
+  .user-detail {
+    padding: 20px 0;
+    display: flex;
+
+    .card-detail {
+      flex: 1;
+      padding: 10px;
+
+      h3 {
+        color: var(--secondary-color);
+        padding: 10px 0;
+        border-bottom: solid 2px var(--primary-color);
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .detail-wrapper {
+        margin-bottom: 20px;
+
+        .detail-description {
+          color: var(--secondary-color);
+          margin-bottom: 2px;
+          min-width: 98px;
+          font-size: 13px;
+          font-weight: bold;
+          opacity: 0.8;
+        }
+
+        .detail-value {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .user-detail-wrapper {
+
+    .user-detail {
+      flex-wrap: wrap;
+
+      .card-detail {
+
+        &.personal-info, &.address {
+          flex: 0 0 50%;
+        }
+
+        &.company {
+          flex: 0 0 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .user-detail-wrapper {
+
+    .user-detail {
+      flex-direction: column;
+    }
+  }
+}

@@ -15,9 +15,9 @@
         <td data-title="Email">{{ user.email }}</td>
         <td data-title="Website">{{ user.website }}</td>
         <td>
-          <button>
+          <a [routerLink]="['/user', user.id]">
             View Detail
-          </button>
+          </a>
         </td>
       </tr>
     </table>

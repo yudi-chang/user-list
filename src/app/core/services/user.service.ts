@@ -14,4 +14,8 @@ export class UserService {
   fetchUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.apiUrl)
   }
+
+  fetchUserDetail(id: number): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/${id}`)
+  }
 }
