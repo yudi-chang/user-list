@@ -2,6 +2,8 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.1.
 
+Live website: https://user-list-yudi-chang.netlify.app/
+
 ## Development server
 
 To start a local development server, run:
