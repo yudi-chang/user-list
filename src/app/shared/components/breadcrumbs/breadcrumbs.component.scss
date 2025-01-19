@@ -1,0 +1,29 @@
+.breadcrumbs {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 25px;
+
+  .breadcrumb-item {
+
+    a {
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    &::after {
+      content: '>';
+      margin: 0 10px;
+    }
+
+    &:last-child {
+      span {
+        color: var(--secondary-color);
+      }
+
+      &::after {
+        content: '';
+      }
+    }
+  }
+}

@@ -4,14 +4,18 @@ import { UserService } from '@core/services/user.service';
 import { of } from 'rxjs';
 import { User } from '@shared/models/user.model';
 import { LoadingErrorWrapperComponent } from '@shared/components/loading-error-wrapper/loading-error-wrapper.component';
-import { NgFor } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { NgFor, Location } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
 import { usersResponse } from '@test/mock-data/users.mock';
+import { UserDetailComponent } from '../user-detail/user-detail.component';
+import { By } from '@angular/platform-browser';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
   let fixture: ComponentFixture<UserListComponent>;
   let mockUserService: jasmine.SpyObj<UserService>;
+  let router: Router;
+  let location: Location;
 
   const mockUsers: User[] = usersResponse;
 
@@ -23,15 +27,21 @@ describe('UserListComponent', () => {
         UserListComponent,
         LoadingErrorWrapperComponent,
         NgFor,
+        RouterModule.forRoot([
+          { path: 'user/:id', component: UserDetailComponent },
+        ])
       ],
       providers: [
         { provide: UserService, useValue: mockUserService },
-        { provide: ActivatedRoute, useValue: {} },
       ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(UserListComponent);
     component = fixture.componentInstance;
+    
+    router = TestBed.inject(Router);
+    location = TestBed.inject(Location);
+
     mockUserService.fetchUsers.and.returnValue(of(mockUsers));
     fixture.detectChanges();
   });
@@ -57,6 +67,25 @@ describe('UserListComponent', () => {
       expect(compiled.querySelectorAll('[data-test="email"]')[index].textContent).toContain(user.email);
       expect(compiled.querySelectorAll('[data-test="website"]')[index].textContent).toContain(user.website);
     })
+  });  
+
+  it('should navigate to user detail page when view detail is clicked', async () => {
+    const userDetailLink = fixture.debugElement.queryAll(By.css('[data-test="user-detail-link"]'));
+
+    userDetailLink[0].nativeElement.click();
+
+    await fixture.whenStable();
+    fixture.detectChanges();
+    
+    expect(location.path()).toBe(`/user/${mockUsers[0].id}`);
+
+    // test click other user detail link
+    // though can test all user detail link click (using forEach), I dont think it's necessary, just pick 1 other url should suffice
+    userDetailLink[9].nativeElement.click();
+    await fixture.whenStable();
+    fixture.detectChanges();
+
+    expect(location.path()).toBe(`/user/${mockUsers[9].id}`);
   });
 
   // showing loading, error message, and retry function is not really this component's responsibility

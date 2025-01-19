@@ -3,16 +3,22 @@ import { ActivatedRoute } from '@angular/router';
 import { LoadingErrorWrapperComponent } from "@shared/components/loading-error-wrapper/loading-error-wrapper.component";
 import { User } from '@shared/models/user.model';
 import { UserService } from '@core/services/user.service';
+import { BreadcrumbsComponent } from "@shared/components/breadcrumbs/breadcrumbs.component";
+import Breadcrumb from '@shared/models/breadcrumb.model';
 
 @Component({
   selector: 'app-user-detail',
-  imports: [LoadingErrorWrapperComponent],
+  imports: [LoadingErrorWrapperComponent, BreadcrumbsComponent],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.scss'
 })
 export class UserDetailComponent implements OnInit {
   user: User | null = null;
   userId: number | null = null;
+  breadcrumbs: Breadcrumb[] = [
+    { label: 'Users', url: '/' },
+    { label: 'User Detail', url: '' },
+  ];
 
   constructor(
     private userService: UserService,
